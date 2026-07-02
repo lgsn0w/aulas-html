@@ -1,0 +1,363 @@
+/* ==========================================================================
+   style-exemplo-1-profissional.css
+   Exercício 3 · Chegar no visual
+
+   Este arquivo é UM EXEMPLO de solução, comentado como se fosse uma aula:
+   cada regra explica o que a propriedade FAZ (o mecanismo), não só o
+   efeito visual final. Não existe "a" resposta certa para o exercício,
+   existe a resposta que bate com o alvo pedido no slide.
+
+   ESTRUTURA HTML QUE ESSE CSS ESPERA (o esqueleto do seu cartão digital):
+
+     <body>
+       <header>
+         <h1>Seu Nome</h1>
+         <p>Sua profissão ou frase de efeito</p>
+       </header>
+
+       <main>
+         <section>
+           <h2>Sobre mim</h2>
+           <p>Texto...</p>
+         </section>
+
+         <section>
+           <h2>Habilidades</h2>
+           <ul class="skills">
+             <li>HTML</li>
+             <li>CSS</li>
+             <li>Git</li>
+           </ul>
+         </section>
+
+         <section>
+           <h2>Contato</h2>
+           <a href="mailto:voce@email.com">Enviar e-mail</a>
+           <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+         </section>
+       </main>
+
+       <footer>
+         <p>Feito por Você · 2026</p>
+       </footer>
+     </body>
+
+   Conecte este arquivo no <head> do seu HTML assim:
+     <link rel="stylesheet" href="style-exemplo-1-profissional.css">
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. RESET BÁSICO
+   O seletor * (universal) aplica a regra a TODOS os elementos da página,
+   sem exceção. Usamos isso para zerar margin e padding porque cada
+   navegador define valores padrão diferentes para eles (um <h1>, por
+   exemplo, já vem com margem própria no Chrome). Zerando aqui, todo
+   espaçamento que aparecer depois foi ESCRITO por nós, de propósito.
+
+   box-sizing controla COMO o navegador calcula a largura final de um
+   elemento. O padrão (content-box) soma padding e border por FORA da
+   largura definida, o que obriga a fazer conta toda vez que se muda o
+   padding. Com border-box, padding e border entram DENTRO da largura
+   definida: se você diz width: 200px, o elemento continua com 200px de
+   largura total, não importa o padding que tenha.
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================================
+   2. BASE DA PÁGINA
+   Propriedades definidas no body são herdadas pela maioria dos elementos
+   de texto dentro dele (font-family, color, line-height). Por isso
+   definimos a base aqui, uma vez, em vez de repetir em cada tag.
+   ========================================================================== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  /* font-family aceita uma LISTA de fontes: o navegador tenta a primeira;
+     se ela não estiver instalada no sistema do usuário, tenta a próxima. */
+
+  background-color: #eef2f3;
+  /* pinta o fundo do elemento. Como o body ocupa a página inteira,
+     essa cor vira o fundo visível de toda a janela. */
+
+  color: #1f2933;
+  /* define a cor do TEXTO. É herdada por padrão: qualquer elemento
+     dentro do body usa essa cor, a menos que outra regra mais
+     específica (como header h1) sobrescreva. */
+
+  line-height: 1.6;
+  /* controla a altura de cada linha de texto, como um múltiplo do
+     tamanho da fonte. 1.6 significa: a linha ocupa 1.6x a altura da
+     fonte, deixando espaço extra entre uma linha e a próxima. */
+}
+
+
+/* ==========================================================================
+   3. HEADER
+   Seletor de elemento (header): a regra vale para toda tag <header> da
+   página. Como só existe uma no documento, funciona como um "id" na
+   prática, mas sem exigir que a gente marque nada no HTML.
+   ========================================================================== */
+header {
+  background-color: #15191f;
+  color: #ffffff;
+  /* sobrescreve a cor herdada do body, mas só dentro do header:
+     especificidade de descendência não é necessária aqui porque
+     "header" já é mais específico que "body" para os elementos
+     que estão dentro dele. */
+
+  text-align: center;
+  /* alinha o conteúdo INLINE (texto, mas também elementos inline-block)
+     ao centro horizontal do elemento pai. Não centraliza o próprio
+     header, e sim o que está dentro dele. */
+
+  padding: 56px 24px;
+  /* quando padding recebe dois valores, o primeiro vale para
+     topo E baixo, o segundo para esquerda E direita. */
+}
+
+header h1 {
+  /* "header h1" é um seletor descendente: só afeta um h1 que esteja
+     DENTRO de um header, não qualquer h1 da página. */
+
+  font-size: 2.5rem;
+  /* rem é uma unidade relativa ao tamanho de fonte do elemento raiz
+     (<html>), que por padrão é 16px no navegador. Então 2.5rem = 40px,
+     mas se o usuário mudar a configuração de fonte do navegador,
+     esse valor escala junto, ao contrário de px, que é fixo. */
+
+  margin-bottom: 8px;
+  /* cria espaço só abaixo do elemento, empurrando o próximo elemento
+     (o <p>) para mais longe. */
+
+  letter-spacing: 0.5px;
+  /* adiciona espaço extra entre cada caractere do texto. */
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  font-style: italic;
+  /* troca o estilo da fonte para itálico. Só funciona se a fonte
+     escolhida tiver uma variante itálica; caso contrário, o navegador
+     tenta "inclinar" a fonte normal artificialmente. */
+}
+
+
+/* ==========================================================================
+   4. ÁREA PRINCIPAL
+   ========================================================================== */
+main {
+  max-width: 720px;
+  /* impede que a largura do elemento passe de 720px, mesmo que o
+     elemento pai (aqui, o body) seja mais largo que isso. Sem essa
+     regra, o texto se esticaria pela tela inteira em monitores grandes,
+     o que dificulta a leitura (linhas longas demais). */
+
+  margin: 0 auto;
+  /* quando os valores da esquerda e direita são "auto", o navegador
+     calcula o espaço restante (largura do pai menos a largura do
+     elemento) e divide igualmente entre os dois lados. É assim que
+     se centraliza um bloco horizontalmente em CSS. */
+
+  padding: 40px 24px;
+}
+
+
+/* ==========================================================================
+   5. SECTIONS (os "cartões" de conteúdo)
+   ========================================================================== */
+section {
+  background-color: #ffffff;
+
+  border-left: 4px solid #2563eb;
+  /* border-left é um atalho que define três coisas de uma vez para a
+     borda esquerda: espessura (4px), estilo da linha (solid) e cor.
+     Poderíamos ter usado border-left-width, border-left-style e
+     border-left-color separadamente; o atalho faz o mesmo em uma linha. */
+
+  border-radius: 8px;
+  /* arredonda os quatro cantos do elemento. O valor é o raio (em px)
+     do círculo imaginário usado para desenhar a curva de cada canto. */
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* box-shadow recebe, nessa ordem: deslocamento horizontal (0),
+     deslocamento vertical (2px, a sombra "cai" para baixo), o raio de
+     desfoque (8px, quanto maior, mais suave/espalhada a sombra) e a
+     cor. rgba(0,0,0,0.08) é preto com apenas 8% de opacidade, por
+     isso a sombra é discreta e não um bloco cinza sólido. */
+
+  padding: 28px 32px;
+
+  margin-bottom: 24px;
+  /* separa esta section da próxima. Como cada section é um bloco
+     independente (não estão dentro uma da outra), a margin de uma
+     não se combina com o padding da outra: elas simplesmente somam
+     o espaço, criando a distância entre os cartões. */
+}
+
+section h2 {
+  color: #2563eb;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+section p {
+  color: #374151;
+}
+
+
+/* ==========================================================================
+   6. LISTA DE HABILIDADES (pílulas)
+   O seletor "ul.skills" combina um elemento (ul) com uma classe
+   (.skills): só afeta uma <ul> que tenha exatamente class="skills",
+   não qualquer <ul> da página.
+   ========================================================================== */
+ul.skills {
+  list-style: none;
+  /* remove o marcador padrão que o navegador desenha antes de cada
+     <li> (a bolinha, no caso de uma lista não-ordenada). */
+
+  display: flex;
+  /* muda o modo como os filhos diretos deste elemento são organizados:
+     em vez do comportamento padrão (cada <li> em sua própria linha,
+     de cima para baixo), o flexbox os coloca em uma linha, um ao lado
+     do outro, da esquerda para a direita. */
+
+  flex-wrap: wrap;
+  /* por padrão, o flexbox tenta encaixar todos os itens em UMA linha
+     só, encolhendo-os se necessário. Com wrap, quando não houver
+     espaço suficiente, os itens que não couberem passam para uma
+     nova linha, como um texto que quebra automaticamente. */
+
+  gap: 10px;
+  /* define o espaço entre os itens do flexbox, tanto na direção
+     horizontal quanto na vertical (quando há mais de uma linha).
+     Faz o mesmo que colocar margin em cada <li>, mas sem o problema
+     de sobrar margem extra na borda externa da lista. */
+}
+
+ul.skills li {
+  background-color: #eaf0fe;
+  color: #1d4ed8;
+  padding: 6px 16px;
+
+  border-radius: 999px;
+  /* quando o raio do arredondamento é maior que a metade da altura
+     do elemento, os dois lados da curva se encontram e o resultado
+     é um formato de "pílula" (cantos totalmente redondos, sem
+     nenhuma parte reta nas laterais). */
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+  /* font-weight controla a espessura dos traços da fonte, numa escala
+     de 100 (bem fino) a 900 (bem grosso). O padrão do texto normal é
+     400; "bold" equivale a 700. 600 fica no meio: mais destacado que
+     o texto normal, sem ser tão pesado quanto um bold completo. */
+}
+
+
+/* ==========================================================================
+   7. LINKS COMO BOTÕES
+   ========================================================================== */
+a {
+  display: inline-block;
+  /* por padrão, <a> é um elemento "inline": ele ignora width, height,
+     e padding/margin verticais, comportando-se como se fosse parte do
+     texto ao redor. Trocando para inline-block, o link continua
+     fluindo na linha de texto, mas passa a respeitar padding e margin
+     como se fosse uma caixa, o que é necessário para parecer um botão. */
+
+  background-color: #2563eb;
+  color: #ffffff;
+
+  text-decoration: none;
+  /* remove o sublinhado que o navegador aplica por padrão a todo link. */
+
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-right: 10px;
+  margin-top: 8px;
+  font-weight: 600;
+
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  /* por padrão, quando um valor de CSS muda (por exemplo, no :hover
+     abaixo), o navegador aplica a mudança instantaneamente. transition
+     diz para animar essa mudança ao longo do tempo. Aqui, aplicamos a
+     duas propriedades (background-color e transform), cada mudança
+     levando 0.2 segundos, com a curva de aceleração "ease" (começa
+     rápido, desacelera no fim). */
+}
+
+a:hover {
+  /* :hover é uma pseudo-classe: não seleciona um elemento diferente,
+     seleciona um ESTADO do mesmo elemento — aqui, o estado "o cursor
+     do mouse está sobre este link agora". A regra só é aplicada
+     enquanto esse estado for verdadeiro. */
+
+  background-color: #1d4ed8;
+
+  transform: translateY(-2px);
+  /* transform aplica transformações geométricas ao elemento sem afetar
+     o layout dos elementos ao redor (diferente de mudar margin, por
+     exemplo, que empurraria outros elementos). translateY move o
+     elemento no eixo vertical; valores negativos movem para cima. */
+}
+
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+  font-size: 0.85rem;
+
+  border-top: 1px solid #d1d5db;
+  /* border-top desenha uma borda em apenas UM lado do elemento (o de
+     cima), diferente de "border", que desenharia nos quatro lados. */
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVIDADE
+   Uma media query aplica as regras que estão dentro dela SOMENTE
+   quando a condição declarada for verdadeira. "max-width: 600px"
+   significa: "aplique isto quando a largura da janela do navegador
+   for de até 600 pixels". Fora dessa condição, o navegador ignora
+   completamente o bloco.
+   ========================================================================== */
+@media (max-width: 600px) {
+  header {
+    padding: 40px 16px;
+  }
+
+  header h1 {
+    font-size: 1.9rem;
+  }
+
+  main {
+    padding: 24px 16px;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  a {
+    display: block;
+    /* muda de inline-block para block: o elemento passa a ocupar
+       sozinho toda a linha disponível (100% da largura do pai), em
+       vez de ficar lado a lado com outros links. Em telas pequenas,
+       isso cria uma área de toque maior e mais fácil de acertar. */
+
+    text-align: center;
+    margin-right: 0;
+  }
+}
