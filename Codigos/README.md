@@ -12,11 +12,14 @@ Envie seus arquivos diretamente pelo navegador, sem precisar saber Git!
 
 ## Organização
 
-Coloque seus arquivos em uma pasta com seu nome, por exemplo:
+Crie uma pasta com o número da aula e seu nome, por exemplo:
 
 ```
 Codigos/
-  lucas/
+  01 - Lucas/
+    index.html
+    style.css
+  02 - Lucas/
     index.html
     style.css
 ```
