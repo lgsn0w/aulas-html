@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #222;
+}
+
+header {
+  background-color: #f0a500;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+header p {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+section {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  color: #f0a500;
+}
+
+button {
+  width: fit-content;
+  padding: 0.5rem 1.4rem;
+  background-color: #f0a500;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c98a00;
+}
+
+input {
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 260px;
+}
+
+.caixa {
+  width: 160px;
+  height: 80px;
+  background-color: #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#contador {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f0a500;
+}
+
+#resposta-nome {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2d6a4f;
+  min-height: 1.5rem;
+}

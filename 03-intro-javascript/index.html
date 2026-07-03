@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meus Primeiros Passos com JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <header>
+      <h1>JavaScript na Prática</h1>
+      <p>Clique nos botões e veja o JS agindo na página.</p>
+    </header>
+
+    <main>
+
+      <!-- EXEMPLO 1: mudar texto -->
+      <section>
+        <h2>1. Mudar texto</h2>
+        <p id="texto-exemplo">Esse texto vai mudar quando você clicar no botão.</p>
+        <button onclick="mudarTexto()">Mudar texto</button>
+      </section>
+
+      <!-- EXEMPLO 2: mudar cor de fundo -->
+      <section>
+        <h2>2. Mudar cor de fundo</h2>
+        <div id="caixa-cor" class="caixa">Caixa colorida</div>
+        <button onclick="mudarCor()">Mudar cor</button>
+      </section>
+
+      <!-- EXEMPLO 3: contador -->
+      <section>
+        <h2>3. Contador</h2>
+        <p>Valor: <span id="contador">0</span></p>
+        <button onclick="incrementar()">+ 1</button>
+        <button onclick="zerar()">Zerar</button>
+      </section>
+
+      <!-- EXEMPLO 4: input + resposta -->
+      <section>
+        <h2>4. Pegar o que o usuário digitou</h2>
+        <input type="text" id="campo-nome" placeholder="Digite seu nome" />
+        <button onclick="cumprimentar()">Cumprimentar</button>
+        <p id="resposta-nome"></p>
+      </section>
+
+    </main>
+
+    <!--
+      IMPORTANTE: o <script> fica no final do <body>.
+      Assim o HTML carrega primeiro, aí o JS encontra os elementos.
+    -->
+    <script src="script.js"></script>
+
+  </body>
+</html>
