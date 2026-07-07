@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio — Botões e Interatividade</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <!--
+      =====================================================
+      BOTÃO MODO ESCURO
+      =====================================================
+      Fica fixo no canto superior direito.
+      Ao clicar, o JS adiciona/remove a classe "dark" no <body>.
+      O CSS usa body.dark { } para redefinir as cores.
+    -->
+    <button id="btn-tema" onclick="alternarTema()">🌙 Modo Escuro</button>
+
+    <!--
+      =====================================================
+      BOTÃO VOLTAR AO TOPO
+      =====================================================
+      Começa invisível (display: none no CSS).
+      O JS mostra ele quando o usuário rola a página para baixo.
+    -->
+    <button id="btn-topo" onclick="voltarAoTopo()">↑ Topo</button>
+
+    <header>
+      <h1>Portfólio de Desenvolvedor</h1>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ================================================= -->
+      <section id="sobre">
+        <h2>Sobre mim</h2>
+        <p class="destaque">
+          Estudante de desenvolvimento web apaixonado por criar interfaces
+          funcionais e bem estruturadas.
+        </p>
+        <p>
+          Atualmente aprendendo HTML, CSS e os fundamentos da web moderna.
+        </p>
+      </section>
+
+      <!-- ================================================= -->
+      <section id="habilidades">
+        <h2>Habilidades</h2>
+
+        <!--
+          As primeiras habilidades aparecem normalmente.
+          As extras têm a classe "oculto" e só aparecem após o clique.
+        -->
+        <ul class="lista-habilidades">
+          <li>HTML semântico</li>
+          <li>CSS e estilização</li>
+          <li>Lógica de programação</li>
+          <li>Python</li>
+          <li class="oculto">JavaScript</li>
+          <li class="oculto">Git e controle de versão</li>
+          <li class="oculto">Responsividade</li>
+        </ul>
+
+        <!--
+          Exemplo 1 — mostrar/ocultar
+          classList.toggle("oculto") remove a classe se existir,
+          ou adiciona se não existir.
+        -->
+        <button class="btn" onclick="revelarHabilidades()">
+          + Ver mais habilidades
+        </button>
+      </section>
+
+      <!-- ================================================= -->
+      <section id="projetos">
+        <h2>Projetos</h2>
+        <p>Confira alguns trabalhos desenvolvidos durante o curso:</p>
+
+        <article class="card-projeto">
+          <h3>Cartão Digital</h3>
+          <p>Página pessoal com HTML semântico e CSS do zero.</p>
+          <a href="#" class="btn">Ver projeto</a>
+        </article>
+
+        <article class="card-projeto destaque">
+          <h3>Calculadora em Python</h3>
+          <p>Lógica de programação aplicada com funções e loops.</p>
+          <a href="#" class="btn">Ver projeto</a>
+        </article>
+
+        <!--
+          Este card começa oculto.
+          Aparece quando o botão "Ver mais projetos" for clicado.
+        -->
+        <article class="card-projeto oculto" id="projeto-extra">
+          <h3>Lista de Tarefas</h3>
+          <p>Aplicação interativa usando JavaScript e manipulação do DOM.</p>
+          <a href="#" class="btn">Ver projeto</a>
+        </article>
+
+        <!--
+          Exemplo 2 — mostrar/ocultar com troca de texto no botão
+          O botão guarda o estado em um atributo data- e troca o texto.
+        -->
+        <button class="btn btn-secundario" id="btn-projetos" onclick="alternarProjetos()">
+          + Ver mais projetos
+        </button>
+      </section>
+
+      <!-- ================================================= -->
+      <section id="contato">
+        <h2>Contato</h2>
+        <p>Quer conversar? Me encontre por aqui:</p>
+        <ul>
+          <!--
+            Exemplo 3 — copiar para a área de transferência
+            navigator.clipboard.writeText() copia o texto.
+            O feedback é dado trocando o textContent do botão.
+          -->
+          <li class="linha-email">
+            <span id="texto-email">lucas@email.com</span>
+            <button class="btn btn-pequeno" onclick="copiarEmail()">
+              📋 Copiar
+            </button>
+          </li>
+          <li><a href="https://github.com" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+        </ul>
+
+        <!--
+          Exemplo 4 — contador + reset
+          Variável JS guarda quantas vezes o botão foi clicado.
+          O <span> mostra o valor na tela.
+        -->
+        <div class="caixa-contador">
+          <p>Interesse em contato: <strong><span id="contador">0</span></strong> clique(s)</p>
+          <button class="btn" onclick="registrarInteresse()">
+            👋 Tenho interesse!
+          </button>
+          <button class="btn btn-secundario" onclick="zerarContador()">
+            Zerar
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p id="rodape-principal">Feito com HTML, CSS e JavaScript · 2026</p>
+    </footer>
+
+    <!--
+      <script> sempre no final do body.
+      Assim o HTML já existe quando o JS tentar encontrar os elementos.
+    -->
+    <script src="script.js"></script>
+  </body>
+</html>
