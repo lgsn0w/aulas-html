@@ -70,8 +70,10 @@ section h2{
 ul,ol{
     margin-left:30px;
 }
-
-
+h2{
+    color:#ff2b2b;
+    margin-bottom:15px;
+}
 /* FRASE */
 
 blockquote{
@@ -80,6 +82,18 @@ blockquote{
     border-left:5px solid red;
     font-style:italic;
 }
+.botao-aranha {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: rgb(226, 32, 32);
+    color: rgb(9, 6, 6);
+    border: none;
+    align-items: center;
+    cursor: pointer;
+    transform: scale(0.97);
+}
+
 
 
 /* GALERIA */
