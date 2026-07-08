@@ -6,6 +6,9 @@ let botao = document.getElementById("btn-oi");
      botao.addEventListener("click", dizerOi);
 
 let trailer = document.getElementById("trailer")
-    trailer.addEventListener("click"), function(){
+
+    function abrirTrailer(){
+        trailer.addEventListener("click")
         alert("Abrindo os trailers...")
 }
+    
